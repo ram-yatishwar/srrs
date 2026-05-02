@@ -1,0 +1,5 @@
+# Ignore node_modules and Firebase local files
+node_modules/
+.firebase/
+.DS_Store
+

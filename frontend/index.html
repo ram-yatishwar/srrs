@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Rama Sanjeeva Traders – Live Wholesale Prices</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:wght@300;400;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2076359543067114"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="hbg"></div>
+    <div class="hi">
+      <a class="lw" id="logoLink" href="https://srrs.com" target="_blank" rel="noopener">
+        <div class="lsc" id="logoBox"></div>
+        <div>
+          <div class="bn">Sri Rama Sanjeeva Traders</div>
+          <div class="bs">Wholesale Trading · Proddatur, A.P.</div>
+        </div>
+      </a>
+      <div class="hr">
+        <div class="lp"><span class="ld"></span>Live Prices</div>
+        <div id="clock">--:--:--</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="ms">
+    <div class="mi" id="mqInner"></div>
+  </div>
+
+  <nav class="tabs">
+    <div class="ti">
+      <button class="tb active" id="tab-prices">📊 Price Board</button>
+      <button class="tb" id="tab-contact">📞 Contact</button>
+      <div class="tsp"></div>
+      <div id="userArea"></div>
+    </div>
+  </nav>
+
+  <div class="page active" id="page-prices">
+    <div class="mc">
+      <div class="sh">
+        <h2>Today's Wholesale Price List</h2>
+        <p>Live rates · ₹ per Kilogram · Registered Buyers Only</p>
+        <div class="orn">
+          <div class="ol"></div>
+          <div class="og"></div>
+          <div class="ol olr"></div>
+        </div>
+      </div>
+      <div id="lockedView">
+        <div class="lb">
+          <span class="lic">🔒</span>
+          <h3>Members-Only Pricing</h3>
+          <p>Our wholesale prices are exclusively available to registered and approved buyers. Register free or sign in
+            to view today's live rates.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <button class="bsf" id="btnSignIn">🔑 Sign In</button>
+            <button class="bol" id="btnRegister">📝 Register Now</button>
+          </div>
+        </div>
+      </div>
+      <div id="pendingNote" style="display:none">
+        <div class="pn">
+          <span class="pni">⏳</span>
+          <h3>Approval Pending</h3>
+          <p>Your registration has been received and is under review by our management.<br><br>
+            You will receive an email once approved — usually within 24 hours.<br><br>
+            For queries: <strong>+91 94404 28806</strong></p>
+        </div>
+      </div>
+      <div class="pg" id="priceGrid" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-contact">
+    <div class="cw">
+      <div class="cc">
+        <h2>📍 Sri Rama Sanjeeva Traders</h2>
+        <div class="cgrid">
+          <div class="cit" style="grid-column:1/-1">
+            <div class="cil">👥 Owners</div>
+            <div class="civ" style="font-size:1rem;font-weight:600">Sreenivasulu & Suresh Kumar</div>
+          </div>
+          <div class="cit">
+            <div class="cil">📞 Primary Phone</div>
+            <div class="civ"><a href="tel:9440428806">+91 94404 28806</a></div>
+          </div>
+          <div class="cit">
+            <div class="cil">📱 Alternate Phone</div>
+            <div class="civ"><a href="tel:9491287206">+91 94912 87206</a></div>
+          </div>
+          <div class="cit">
+            <div class="cil">📧 Email</div>
+            <div class="civ"><a
+                href="/cdn-cgi/l/email-protection#e89b9d9a8d9b80839d85899ac6899a899e8d9c81a88f85898184c68b8785"><span
+                  class="__cf_email__"
+                  data-cfemail="1f6c6a6d7a6c77746a727e6d317e6d7e697a6b765f78727e7673317c7072">[email&#160;protected]</span></a>
+            </div>
+          </div>
+          <div class="cit">
+            <div class="cil">⏰ Working Hours</div>
+            <div class="civ">Mon – Sat<br>7:00 AM – 7:00 PM</div>
+          </div>
+          <div class="cit" style="grid-column:1/-1">
+            <div class="cil">📍 Address</div>
+            <div class="civ">Wholesale Market, Proddatur,<br>Andhra Pradesh – 517 501</div>
+          </div>
+        </div>
+        <a class="wa" href="https://wa.me/919440428806" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button class="fab" id="fabBtn" title="Admin">⚙</button>
+  <footer>
+    <p>&copy; 2025 <b>Sri Rama Sanjeeva Traders</b> · All Rights Reserved · Proddatur, Andhra Pradesh</p>
+  </footer>
+  <div class="toast" id="toast"></div>
+
+  <!-- LOGIN -->
+  <div class="ov" id="loginOv">
+    <div class="modal">
+      <button class="mc2" id="closeLogin">✕</button>
+      <h2>🔑 Member Sign In</h2>
+      <p class="msub">Sign in to view exclusive wholesale prices.</p>
+      <div class="fl2"><label>Email Address</label><input type="email" id="le" placeholder="your@email.com" /></div>
+      <div class="fl2"><label>Password</label><input type="password" id="lp" placeholder="Your password" /></div>
+      <button class="bsf bfu" id="loginBtn">Sign In</button>
+      <p class="err" id="lerr"></p>
+      <div class="dvt">New customer?</div>
+      <button class="bol bfu" id="goRegister">📝 Create Account</button>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <div class="ov" id="regOv">
+    <div class="modal mlg">
+      <button class="mc2" id="closeReg">✕</button>
+      <h2>📝 Buyer Registration</h2>
+      <p class="msub">Fill in your details. Your account will be reviewed and approved by management before you can view
+        prices.</p>
+      <div class="fr">
+        <div class="fl2"><label>Full Name *</label><input type="text" id="rn" placeholder="Your full name" /></div>
+        <div class="fl2"><label>Business Name *</label><input type="text" id="rb" placeholder="Shop / firm name" />
+        </div>
+      </div>
+      <div class="fr">
+        <div class="fl2"><label>Phone *</label><input type="tel" id="rph" placeholder="+91 XXXXX XXXXX" /></div>
+        <div class="fl2"><label>City *</label><input type="text" id="rct" placeholder="Your city" /></div>
+      </div>
+      <div class="fl2"><label>Email Address *</label><input type="email" id="rem" placeholder="your@email.com" /></div>
+      <div class="fl2"><label>Set Password *</label><input type="password" id="rpw" placeholder="Min. 6 characters" />
+      </div>
+      <div class="fl2"><label>Items of Interest</label><input type="text" id="rit"
+          placeholder="e.g. Garlic, Salt, Copra…" /></div>
+      <button class="bsf bfu" id="regBtn">Submit Registration</button>
+      <p class="err" id="rerr"></p>
+      <div class="sbox" id="rsuc">
+        ✅ <strong>Registration Submitted!</strong><br>
+        Your request has been sent to our management.<br>
+        You'll receive an email once approved — usually within 24 hours.<br><br>
+        📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+          data-cfemail="80f3f5f2e5f3e8ebf5ede1f2aee1f2e1f6e5f4e9c0e7ede1e9ecaee3efed">[email&#160;protected]</a>
+        &nbsp;|&nbsp; 📞 +91 94404 28806
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN -->
+  <div class="ov" id="adminLoginOv">
+    <div class="modal">
+      <button class="mc2" id="closeAdminLogin">✕</button>
+      <h2>🔐 Admin Access</h2>
+      <p class="msub">Owner / manager access only.</p>
+      <div class="fl2"><label>Admin Password</label><input type="password" id="apw" placeholder="Enter password" />
+      </div>
+      <button class="bsf bfu" id="adminLoginBtn">Login</button>
+      <p class="err" id="aperr"></p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="ov" id="adminOv">
+    <div class="modal mlg">
+      <button class="mc2" id="closeAdmin">✕</button>
+      <h2>⚙ Admin Panel</h2>
+      <div class="atabs">
+        <button class="at active" id="at-prices">💰 Prices</button>
+        <button class="at" id="at-pending">👥 Requests <span class="bc" id="pbadge">…</span></button>
+        <button class="at" id="at-members">✅ Members</button>
+      </div>
+      <div class="atc active" id="atc-prices">
+        <div class="ag" id="adminGrid"></div>
+        <div class="aac">
+          <button class="bg" id="closeAdminPanel">Close</button>
+          <button class="bsf" id="saveBtn" style="flex:2">💾 Save & Publish Live</button>
+        </div>
+        <p class="sok" id="sok">✅ Prices updated and live!</p>
+      </div>
+      <div class="atc" id="atc-pending">
+        <div class="pl" id="pendList">
+          <div class="empty">Loading…</div>
+        </div>
+      </div>
+      <div class="atc" id="atc-members">
+        <div class="pl" id="memList">
+          <div class="empty">Loading…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+  <script type="module" src="js/app.js"></script>
