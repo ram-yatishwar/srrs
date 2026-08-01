@@ -19,28 +19,28 @@ jobs:
         with:
           node-version: '20'
 
-      # JDK 17 is required for compiling the modern Gradle wrapper
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # 1. Initialize npm silently so Capacitor can install its dependencies
+      # 1. Initialize npm silently
       - name: Initialize npm package
         working-directory: ./frontend
         run: |
           echo '{"name": "srs-traders", "version": "1.0.0", "private": true}' > package.json
 
-      # 2. Install Capacitor Core, CLI, and the Android module
+      # 2. Pre-create the Capacitor config file to completely skip the interactive init prompt
+      - name: Create Capacitor Configuration File
+        working-directory: ./frontend
+        run: |
+          echo '{"appId": "com.srstraders.app", "appName": "SRS Traders", "webDir": "."}' > capacitor.config.json
+
+      # 3. Install Capacitor modules
       - name: Install Capacitor Core & CLI
         working-directory: ./frontend
         run: npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 --save-dev
-
-      # 3. Configure Capacitor to treat your current directory as the web asset build folder
-      - name: Initialize Capacitor Configuration
-        working-directory: ./frontend
-        run: npx cap init "SRS Traders" "com.srstraders.app" --web-dir . --confirm
 
       # 4. Inject the native Android project structures
       - name: Add Android Platform
