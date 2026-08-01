@@ -1,10 +1,10 @@
-name: Build Android APK
+name: Build Android APK from Web App
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,10 +14,49 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # Put your specific frontend framework build steps right here (Flutter or React Native)
+      # 1. Initialize npm and install Capacitor inside the frontend folder
+      - name: Install Capacitor Core & CLI
+        working-directory: ./frontend
+        run: |
+          npm init -y
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+
+      # 2. Configure Capacitor to point to your project layout
+      - name: Initialize Capacitor Configuration
+        working-directory: ./frontend
+        run: |
+          npx cap init "SRS Traders" "com.srstraders.app" --web-dir .
+
+      # 3. Add the native Android platform files
+      - name: Add Android Platform
+        working-directory: ./frontend
+        run: npx cap add android
+
+      # 4. Sync your HTML/CSS/JS assets into the Android native wrapper
+      - name: Sync Web Assets to Android
+        working-directory: ./frontend
+        run: npx cap sync android
+
+      # 5. Compile the final .apk binary using Gradle
+      - name: Build Android APK
+        working-directory: ./frontend/android
+        run: ./gradlew assembleDebug
+
+      # 6. Upload the final installable APK file
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: srs-traders-apk
+          path: frontend/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
