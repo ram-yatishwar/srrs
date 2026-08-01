@@ -19,41 +19,45 @@ jobs:
         with:
           node-version: '20'
 
+      # JDK 17 is required for compiling the modern Gradle wrapper
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # 1. Initialize npm and install Capacitor inside the frontend folder
+      # 1. Initialize npm silently so Capacitor can install its dependencies
+      - name: Initialize npm package
+        working-directory: ./frontend
+        run: |
+          echo '{"name": "srs-traders", "version": "1.0.0", "private": true}' > package.json
+
+      # 2. Install Capacitor Core, CLI, and the Android module
       - name: Install Capacitor Core & CLI
         working-directory: ./frontend
-        run: |
-          npm init -y
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+        run: npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 --save-dev
 
-      # 2. Configure Capacitor to point to your project layout
+      # 3. Configure Capacitor to treat your current directory as the web asset build folder
       - name: Initialize Capacitor Configuration
         working-directory: ./frontend
-        run: |
-          npx cap init "SRS Traders" "com.srstraders.app" --web-dir .
+        run: npx cap init "SRS Traders" "com.srstraders.app" --web-dir . --confirm
 
-      # 3. Add the native Android platform files
+      # 4. Inject the native Android project structures
       - name: Add Android Platform
         working-directory: ./frontend
         run: npx cap add android
 
-      # 4. Sync your HTML/CSS/JS assets into the Android native wrapper
+      # 5. Sync your HTML/CSS/JS files directly into the Android build layers
       - name: Sync Web Assets to Android
         working-directory: ./frontend
         run: npx cap sync android
 
-      # 5. Compile the final .apk binary using Gradle
+      # 6. Execute Gradle to assemble the final debug APK
       - name: Build Android APK
         working-directory: ./frontend/android
         run: ./gradlew assembleDebug
 
-      # 6. Upload the final installable APK file
+      # 7. Expose the built file for free download in GitHub Actions UI
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
